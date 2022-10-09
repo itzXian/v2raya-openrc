@@ -1,0 +1,14 @@
+#!/usr/bin/openrc-run
+
+command="/usr/bin/v2raya"
+command_args="--log-level info --log-file ${log_file}"
+#command_args="--log-disable-timestamp"
+log_file="/var/log/v2raya.log"
+command_background=true
+command_user="root"
+pidfile="/run/${RC_SVCNAME}.pid"
+
+depend() {
+    after NetworkManager
+    want NetworkManager
+}
